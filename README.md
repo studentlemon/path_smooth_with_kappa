@@ -5,7 +5,7 @@ This is used for smoothing path. SQP optimization model is established in Cartes
 
 State space:
 
-![image](https://user-images.githubusercontent.com/32810296/201309714-4fae224e-5043-4a13-9917-bfe2adfdb263.png)
+![image](https://user-images.githubusercontent.com/32810296/201311718-9f37594a-ba9a-4882-88a6-124a1294053d.png)
 
 In this repo, θ is the bias between the angle of reference point and decision variable. k is the curvature.
 
