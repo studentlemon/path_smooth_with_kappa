@@ -1,3 +1,6 @@
+//
+// Created by ljn on 20-3-23.
+//
 #include "reference_path_impl.hpp"
 #include "reference_path.hpp"
 #include "data_struct.hpp"
@@ -53,9 +56,9 @@ void ReferencePath::logBoundsInfo() const {
     reference_path_impl_->logBoundsInfo();
 }
 
-void ReferencePath::updateBounds() {
-    reference_path_impl_->updateBoundsImproved();
-}
+//void ReferencePath::updateBounds(const Map &map) {
+//    reference_path_impl_->updateBoundsImproved(map);
+//}
 
 bool ReferencePath::buildReferenceFromSpline(double delta_s_smaller, double delta_s_larger) {
     return reference_path_impl_->buildReferenceFromSpline(delta_s_smaller, delta_s_larger);

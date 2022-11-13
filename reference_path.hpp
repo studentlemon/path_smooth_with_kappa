@@ -32,15 +32,14 @@ class ReferencePath {
     void logBoundsInfo() const;
 
     // Calculate upper and lower bounds for each covering circle.
-    void updateBounds();
+    //void updateBounds(const Map &map);
 
     // Calculate reference_states_ from x_s_ and y_s_, given delta s.
     bool buildReferenceFromSpline(double delta_s_smaller, double delta_s_larger);
     bool buildReferenceFromStates(const std::vector<State> &states);
     std::shared_ptr<VehicleStateBound> isBlocked() const;
-    std::shared_ptr<ReferencePathImpl> reference_path_impl_;
-
  private:
+    std::shared_ptr<ReferencePathImpl> reference_path_impl_;
 };
 
 #endif //PATH_OPTIMIZER_INCLUDE_PATH_OPTIMIZER_DATA_STRUCT_REFERENCE_PATH_HPP_

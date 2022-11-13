@@ -1,3 +1,7 @@
+//
+// Created by ljn on 20-3-23.
+//
+
 #include <cfloat>
 #include "reference_path_impl.hpp"
 #include "tools/tools.hpp"
@@ -104,34 +108,6 @@ State ReferencePathImpl::getApproxState(const State &original_state, const State
     ret.y = y + sign * move_dis * sin(original_state.heading);
     ret.heading = original_state.heading;
     return ret;
-}
-
-
-void ReferencePathImpl::updateBoundsImproved()
-{
-    VehicleStateBound vehicle_state_bound;
-    double FLAGS_front_length = 3.9;
-    double FLAGS_rear_length = -1.0;
-    double left_bound = 10.0;// use the grid to projection
-    double right_bound = -10.0; // use the grid to projection
-
-
-    for (const auto &state : reference_states_) {
-
-
-        State front_center(state.x + FLAGS_front_length * cos(state.heading),
-                           state.y + FLAGS_front_length * sin(state.heading),
-                           state.heading);
-
-        State rear_center(state.x + FLAGS_rear_length * cos(state.heading),
-                          state.y + FLAGS_rear_length * sin(state.heading),
-                          state.heading);
-
-        vehicle_state_bound.front.set( {left_bound, right_bound}, front_center);
-        vehicle_state_bound.rear.set( {left_bound, right_bound}, rear_center);
-        bounds_.emplace_back(vehicle_state_bound);
-    }
-
 }
 
 //void ReferencePathImpl::updateBoundsImproved(const Map &map) {
@@ -341,16 +317,13 @@ bool ReferencePathImpl::buildReferenceFromSpline(double delta_s_smaller, double 
 }
 
 bool ReferencePathImpl::buildReferenceFromStates(const std::vector<State> &states) {
-
     reference_states_ = states;
     std::vector<double> x_set, y_set, s_set;
-    for (const auto &state: states)
-    {
+    for (const auto &state: states) {
         x_set.emplace_back(state.x);
         y_set.emplace_back(state.y);
         s_set.emplace_back(state.s);
     }
-
     tk::spline x_s, y_s;
     x_s.set_points(s_set, x_set);
     y_s.set_points(s_set, y_set);

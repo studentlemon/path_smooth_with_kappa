@@ -1,3 +1,7 @@
+//
+// Created by ljn on 20-3-23.
+//
+
 #ifndef PATH_OPTIMIZER_INCLUDE_PATH_OPTIMIZER_DATA_STRUCT_REFERENCE_PATH_IMPL_HPP_
 #define PATH_OPTIMIZER_INCLUDE_PATH_OPTIMIZER_DATA_STRUCT_REFERENCE_PATH_IMPL_HPP_
 #include <vector>
@@ -36,13 +40,12 @@ class ReferencePathImpl {
     void logBoundsInfo() const;
 
     // Calculate upper and lower bounds for each covering circle.
-    void updateBoundsImproved();
+    //void updateBoundsImproved(const Map &map);
 
     // Calculate reference_states_ from x_s_ and y_s_, given delta s.
     bool buildReferenceFromSpline(double delta_s_smaller, double delta_s_larger);
     bool buildReferenceFromStates(const std::vector<State> &states);
     std::shared_ptr<VehicleStateBound> isBlocked() const;
-    std::vector<State> reference_states_;
 
  private:
 //    std::vector<double> getClearanceWithDirectionStrict(const State &state,
@@ -59,6 +62,7 @@ class ReferencePathImpl {
     double original_max_s_{};
     bool is_original_spline_set{false};
     // Divided smoothed path info.
+    std::vector<State> reference_states_;
     std::vector<VehicleStateBound> bounds_;
     // Debug.
     std::shared_ptr<VehicleStateBound> blocked_bound_;
