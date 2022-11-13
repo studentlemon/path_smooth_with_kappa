@@ -11,13 +11,13 @@ In this repo, θ is the bias between the angle of reference point and decision v
 
 1. Objective function:
 
-![image](https://user-images.githubusercontent.com/32810296/201308568-f1bac6df-a060-4973-b662-5bcc70f0b984.png)
+![image](https://user-images.githubusercontent.com/32810296/201517261-563861c4-a74c-4097-9235-780cb34c47f3.png)
 
 2. Constraints:
 
-![image](https://user-images.githubusercontent.com/32810296/201308814-58fe1638-e5cc-4847-bce7-8f6e4a537a48.png)
+![image](https://user-images.githubusercontent.com/32810296/201517312-3381dbeb-fc1d-4a41-803f-4690a801f5c7.png)
 
-In the kinematic model constrians, Taylor expansion is used based on reference points.  Sin(θ) = θ， cos(θ) = 1.
+In the kinematic model constrians, Taylor expansion is used based on reference points. 
 
 As shown in figure below, SQP is the smoothing result, where IHA* represents the original path.
 
